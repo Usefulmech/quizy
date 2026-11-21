@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f2ed">
+  <title>Quizy | Trivia Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Quizy home">
+        <span class="wordmark-mark" aria-hidden="true">q</span>
+        <span>quizy</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="screen start-screen" id="start-screen" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <h1 id="welcome-title">Test your<br><span>knowledge.</span></h1>
+          <p class="welcome-description">Ten questions. Choose a category and difficulty to begin.</p>
+          <div class="best-score-card">
+            <span class="best-score-copy">
+              <span class="best-score-label">BEST SCORE</span>
+              <strong id="best-score">Not set yet</strong>
+            </span>
+          </div>
+        </div>
+
+        <div class="setup-card">
+          <div class="card-heading">
+            <h2>Choose your quiz</h2>
+            <p>Select a category and difficulty.</p>
+          </div>
+
+          <form id="quiz-settings">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="">All categories</option>
+              <option value="9">General knowledge</option>
+              <option value="10">Books</option>
+              <option value="11">Film</option>
+              <option value="12">Music</option>
+              <option value="17">Science &amp; nature</option>
+              <option value="18">Computers</option>
+              <option value="21">Sports</option>
+              <option value="22">Geography</option>
+              <option value="23">History</option>
+              <option value="27">Animals</option>
+            </select>
+
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" name="difficulty">
+              <option value="">Any difficulty</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+
+            <p class="form-note">15 seconds per question.</p>
+            <button class="button button-primary start-button" id="start-button" type="submit">
+              <span>Start quiz</span>
+            </button>
+          </form>
+
+          <p class="loading-message" id="loading-message" role="status" hidden>
+            <span class="loading-spinner" aria-hidden="true"></span> Loading questions...
+          </p>
+          <div class="error-message" id="error-message" role="alert" hidden>
+            <p id="error-text"></p>
+            <button class="button button-secondary retry-button" id="retry-button" type="button">Try again</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen quiz-screen" id="quiz-screen" aria-labelledby="question-text" hidden>
+        <div class="quiz-topline">
+          <span class="eyebrow">QUIZ</span>
+          <span class="score-pill">Score <strong id="current-score">0</strong><span class="score-divider">/</span>10</span>
+        </div>
+
+        <div class="progress-row">
+          <span id="question-count">Question 1 of 10</span>
+          <span class="timer-label"><span id="timer-text">15</span> sec</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-track">
+          <span class="progress-fill" id="progress-fill"></span>
+        </div>
+
+        <div class="question-card">
+          <p class="question-kicker" id="question-category">GENERAL KNOWLEDGE</p>
+          <h1 id="question-text" tabindex="-1"></h1>
+          <div class="answer-list" id="answer-list" aria-label="Answer options"></div>
+          <p class="answer-feedback" id="answer-feedback" aria-live="polite"></p>
+        </div>
+
+        <div class="quiz-footer">
+          <button class="button button-primary next-button" id="next-button" type="button" hidden>
+            <span>Next question</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen results-screen" id="results-screen" aria-labelledby="results-title" hidden>
+        <div class="results-card">
+          <p class="eyebrow">RESULTS</p>
+          <h1 id="results-title">Quiz complete</h1>
+          <p class="results-message" id="results-message"></p>
+          <div class="result-score">
+            <strong id="final-score">0/10</strong>
+            <span id="final-percentage">0% correct</span>
+          </div>
+          <p class="new-best" id="new-best" hidden>New best score</p>
+          <p class="storage-note" id="storage-note" role="status" hidden></p>
+          <button class="button button-primary play-again-button" id="play-again-button" type="button">
+            <span>Play again</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>QUIZY</span>
+      <span>Trivia quiz</span>
+    </footer>
+  </div>
+</body>
+</html>
